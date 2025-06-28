@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+        <style type="text/css">
+            *{
+            margin: 0;
+            padding: 0;
+            }
+            #ball{
+            width: 70px;
+            height: 70px;
+            background-color:dodgerblue;
+            border-radius: 50%;
+            }
+            #container{
+                width: 99%;
+                height: 900px;
+                border: aquamarine solid 5px;
+                position: relative;
+            }
+
+        </style>
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="ball"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        window.onload=function(){
+            var width=document.body.offsetWidth;
+            var ball=document.getElementById("ball");
+            var run_width=0;
+            function changewidth(){
+            width=document.body.offsetWidth;
+            }
+            
+            ball_right();
+            function ball_left(){
+                ball.style.marginLeft=run_width+"px";
+                run_width--;
+                if(run_width<=0){
+                    window.setTimeout(ball_right,5);
+                }else{
+                    window.setTimeout(ball_left,5);
+                }
+            }
+            function ball_right(){
+                ball.style.marginLeft=run_width+"px";
+                run_width++;
+                if(run_width>=width-70){
+                    window.setTimeout(ball_left,5);
+                }else{
+                    window.setTimeout(ball_right,5);
+                }
+            }
+            setInterval(changewidth, 1000);
+        }
+    </script>
+</html>

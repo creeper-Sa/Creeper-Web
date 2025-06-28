@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>31-万天航</title>
+    </head>
+    <body>
+    <img src="img/1.jpg" id="imgs"/>
+    </body>
+    <script type="text/javascript">
+        var i=1;
+        function changeImg(){
+            //获取 img 标签
+            var img=document.getElementsByTagName("img")[0];
+            //改变 img 标签中 src 属性的值
+            img.src="img/"+i+".jpg";
+            if(i<3)
+            {
+                i++;
+            }
+            else
+            {
+                i=1;
+            }
+        }
+        window.setInterval(changeImg,1000);
+    </script>
+</html>

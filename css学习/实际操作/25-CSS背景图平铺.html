@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景图平铺</title>
+    <style>
+       
+        div {
+            width: 1500px;
+            height: 1000px;
+            background-color: red;
+
+            background-image: url(../../HTML学习/逸仙.jpg);
+            /* 平铺方式有4种 no-repeat：不平铺，repeat：平铺，repeat-x：X轴平铺，repeat-y：y轴平铺 */
+            background-repeat: no-repeat;
+            background-position: center center;
+
+
+            /* background-size中属性值: contain如果图片的宽高跟盒子的尺寸相等就停止缩放，可能会导致图片显示不全 */
+            /* 如果是cover 则图片可能完全覆盖盒子，可能导致图片显示不全 */
+            /* 如果是100%，则表示图片的宽度跟盒子一样，图片的高度等比缩放 */
+            background-size: 50%;
+
+            /* 背景图的固定在一个区域不动 */
+            background-attachment: fixed;
+            
+        }
+        p {
+            width: 1000px;
+            height: 1000px;
+            background: red url(../../HTML学习/逸仙.jpg ) no-repeat center center/50%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        div标&nbsp;签
+        <textarea title="请输入" placeholder="请输入"></textarea>
+    </div>
+    <p></p>
+</body>
+</html>

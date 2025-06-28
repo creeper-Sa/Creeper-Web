@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+        <style type="text/css">
+            #content{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content" onmouseover="imgOver()" onmouseout="imgOut()"></div>
+        <input type="button" id="btn"
+        value="改变 div 背景颜色" onclick="changeColor()" />
+    </body>
+    <script type="text/javascript">
+        function imgOver()
+        {
+            var div=document.getElementById("content");
+            div.style.backgroundColor="green";
+        }
+        function imgOut()
+        {
+            var div=document.getElementById("content");
+            div.style.backgroundColor="blue";
+        }
+        function changeColor(){
+        /*获取 div 对象*/
+        var div=document.getElementById("content");
+        /*修改 div 背景色*/
+        div.style.backgroundColor="blue";
+        }
+    </script>
+</html>

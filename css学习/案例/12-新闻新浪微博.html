@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+         
+        li {
+            list-style: none;
+        }
+
+        .news {
+            margin: 100px auto;
+            height: 200px;
+            width: 360px;
+            /* background-color: pink; */
+        }
+
+        .news .hd {
+            height: 34px;
+            background-color: #eee;
+            border: 1px solid #dbdee1;
+            border-left: none;
+        }
+        .news .hd a{
+            width: 48px;
+            height: 34px;
+            background-color: #fff;
+            display: inline-block;
+            border-top: 3px solid #ff8400;
+            border-right: 1px solid #dbdee1;
+            margin: -1px;
+            text-align: center;
+
+            line-height: 32px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .news .bd {
+            padding: 5px;
+        }
+
+        .news .bd li {
+            padding-left: 25px;
+            background-image: url(./images/v2.png);
+            background-size: 5%;
+            background-repeat: no-repeat;
+            background-position: 0 center;
+        }
+
+        .news .bd li a {
+            padding-left: 20px;
+            background: url(./images/icon.jpg) no-repeat 0 center;
+            font-size: 12px;
+            color: #666;
+            line-height: 24px;
+        }
+
+        .news .bd li a:hover {
+            color: #ff8400;
+        }
+    </style>
+</head>
+<body>
+    <div class="news">
+        <div class="hd">
+            <a href="#">新闻</a>
+        </div>
+        <div class="bd">
+            <ul>
+                <li>
+                    <a href="#">111111111</a>
+                </li>
+                <li><a href="#">2222222222222</a></li>
+                <li><a href="#">33333333333333</a></li>
+                <li><a href="#">44444444444444</a></li>
+                <li><a href="#">5555555</a></li>
+                <li><a href="#">666666666666</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

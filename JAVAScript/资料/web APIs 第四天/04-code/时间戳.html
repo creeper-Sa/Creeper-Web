@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 100px;
+            border: 1px solid blue;
+            line-height: 100px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+
+        const final = +new Date('2025-6-20 18:00:00');
+        function getTimer() {
+            //用于倒计时的时间戳
+            const now = +new Date();
+             //先转换为秒速
+            let count = (final - now) / 1000
+            //时
+            let h =parseInt(count /60 /60 %24);
+            //分
+            let m = parseInt(count /60 %60);
+            //秒
+            let s = parseInt(count % 60);
+            h = h <10 ? '0' + h : h;
+            m = m <10 ? '0' + m : m;
+            s = s <10 ? '0' + s : s;
+
+            return `距离2025-6-20 18:00:00还有 ${h}时${m}分${s}秒`;
+        }   
+
+        const div = document.querySelector('div');
+        div.innerHTML = getTimer();
+        setInterval(function(){
+            div.innerHTML = getTimer();
+        },1000)
+    </script>
+</body>
+</html>

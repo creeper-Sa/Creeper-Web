@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+        body {
+            background-color: #cccc;
+        }
+        .box {
+            margin: 50px auto;
+            width: 1245px;
+            height: 473px;
+            /* background-color: pink; */
+        }
+        .box .header {
+            width: 1245px;
+            height: 30px;
+            /* background-color: red; */
+        }
+        .box .header h4 {
+            float: left;;
+            font-size: 29px;
+            color: #333333;
+            font-weight: 400;
+            /* background-color: red; */
+        }
+        .box .followheader {
+            margin-left: 34px;
+            font-size: 16px;
+            color: #999999;
+
+            /* background-color: blue; */
+        }
+
+        .box span .more {
+            float: right;
+            text-decoration: none;
+            font-weight: 400;
+            color: #333333;
+        }
+
+        .box .product ul {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 38px;
+            width: 1245px;
+            height: 405px;
+            /* background-color: green; */
+            
+        }
+        .box .product ul li {
+            width: 304px;
+            height: 405px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .box .product img {
+            width: 304px;
+            height: 305px;
+        }
+
+        .box .product .title {
+            margin-top: 15px;
+            font-size: 21px;
+            color: #333333;
+        }
+        .box .product .descripe {
+
+            font-size: 16px;
+            color: #999999;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="header">
+            <h4>
+                人气推荐
+                <span class="followheader">人气爆款 不容错过</span>
+            </h4>
+            <span><a href="#" class="more">更多</a></span>
+        </div>
+        <div class="product">
+            <ul>
+                <li>
+                    <img src="./images/popular_1.jpg" alt="">
+                    <div>
+                        <p class="title">特别优惠</p>
+                        <p class="descripe">我猜得到 你的需要</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="./images/popular_2.jpg" alt="">
+                    <div>
+                        <p class="title">特别优惠</p>
+                        <p class="descripe">我猜得到 你的需要</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="./images/popular_3.jpg" alt="">
+                    <div>
+                        <p class="title">特别优惠</p>
+                        <p class="descripe">我猜得到 你的需要</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="./images/popular_4.jpg" alt="">
+                    <div>
+                        <p class="title">特别优惠</p>
+                        <p class="descripe">我猜得到 你的需要</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+        <style>
+        p{
+        color: #FF0000;
+        }
+        div{
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        }
+        </style>
+    </head>
+    <body>
+        <p>
+        优就业是中公教育 IT 培训平台 APP。<br>优就业业务类型主要包括面授培训、
+        网络远程教学培训、网络直播课程培训、IT 类图书出版等。
+        </p>
+        <div></div>
+</body>
+</html>

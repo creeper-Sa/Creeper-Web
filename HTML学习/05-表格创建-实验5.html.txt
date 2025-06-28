@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title> 31-万天航</title>
+    </head>
+    <body>
+        <!--表格定义-->
+        <table border="1" width = "500" cellpadding = "0" cellspacing = "0" align="center">
+            <!--第一行-->
+            <tr>
+                <!--标题第一列,并修改填充颜色-->
+                <th align="center" bgcolor="azure">
+                    作者
+                </th>
+                <!--标题第二列-->
+                <th align="center" bgcolor="azure">
+                    著作
+                </th>
+            </tr>
+            <tr align="center">
+                <td>
+                    曹雪芹
+                </td>
+
+                <td>
+                    红楼梦
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    万天航
+                </td>
+                <td>
+                    论精通维什戴尔的100种方法
+                </td>
+            </tr>
+            <tr align="center">
+                <td rowspan="2">
+                    路遥
+                </td>
+
+                <td>
+                    平凡的世界
+                </td>
+            </tr>
+            <tr align="center">
+                <td >
+                    惊心动魄的一幕
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

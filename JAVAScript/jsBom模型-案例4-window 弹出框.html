@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>window 弹框</title>
+    </head>
+    <body>
+    <input type="button" onclick="fun1()" value="alert()" />
+    <input type="button" onclick="fun2()" value="confirm()" />
+    <input type="button" onclick="fun3()" value="prompt()" />
+    </body>
+    <script type="text/javascript">
+    /*警告框*/
+    function fun1() {
+    window.alert("我是一个警告框");
+    }
+    /*确认框*/
+    function fun2() {
+    var flag = window.confirm("确定要删除吗？");
+    if(flag) {
+    alert("您按了确认按钮");
+    } else {
+    alert("您按了取消按钮");
+    }
+    }
+    /*提示框*/
+    function fun3() {
+    var uname = window.prompt("请输入您的姓名：", "");
+    if(uname!=null){
+    alert(uname+"您好！");
+    }
+    }
+    </script>
+</html>

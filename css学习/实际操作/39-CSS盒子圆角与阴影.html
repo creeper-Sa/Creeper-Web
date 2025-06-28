@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆角与阴影</title>
+    <style>
+        .yuan {
+            width: 400px;
+            height: 400px;
+            background-color: orange;
+            margin: 0 auto;
+            /* 属性设置于padding类似，从左上角开始顺时针轮换，如果没有属性对应就去对角属性 */
+            /* 正圆图像：圆角属性为50% */
+            /* 最大值只有50%，超过无效 */
+            border-radius: 50%;
+        }
+        .jiao {
+            width: 400px;
+            height: 200px;
+            background-color: red;
+            /* 胶囊图像：圆角属性设为高度的一半 */
+            border-radius: 100px;
+        }
+        .yinying {
+            /* box-shadow: X轴偏移量 Y轴偏移量 模糊半径 扩散半径 颜色 内外阴影 ; */
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: pink;
+            box-shadow: 5px 5px 20px 2px black ;
+        }
+    </style>
+</head>
+<body>
+    <div class="yuan"></div>
+    <div class="jiao"></div>
+    <div class="yinying"></div>
+</body>
+</html>

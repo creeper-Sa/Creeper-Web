@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>31-万天航</title>
+<style>
+  #ball {
+    width: 70px;
+    height: 70px;
+    background-color: blue;
+    border-radius: 50%;
+    position: absolute;
+  }
+  #container{
+                width: 99%;
+                height: 900px;
+                border: aquamarine solid 5px;
+                position: relative;
+            }
+</style>
+</head>
+<body>
+    <div id="container"></div>
+<div id="ball"></div>
+<script>
+  let ball = document.getElementById('ball');
+  let x = 50;
+  let y = 50;
+  let dx = 5;
+  let dy = 5;
+ 
+  function moveBall() {
+    x += dx;
+    y += dy;
+ 
+    if (x >= window.innerWidth - ball.offsetWidth || x <= 0) {
+      dx = -dx;
+    }
+    if (y >= window.innerHeight - ball.offsetHeight || y <= 0) {
+      dy = -dy;
+    }
+ 
+    ball.style.left = `${x}px`;
+    ball.style.top = `${y}px`;
+  }
+ 
+  setInterval(moveBall, 10);
+</script>
+</body>
+</html>

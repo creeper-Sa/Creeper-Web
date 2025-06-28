@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html hang = "zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            31-万天航
+        </title>
+    </head>
+    <body>
+    <!--无序列表-->
+    <ul>
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>葡萄</li>
+    </ul>
+    <!--有序列表-->
+    <ol>
+    <li>首页</li>
+    <li>登录</li>
+    <li>注册</li>
+    </ol>
+    <!--百度是新开窗口-->
+    <a href="http://www.baidu.com" target="_blank">百度</a><br />
+    <!--B站是内置窗口-->
+    <a href="http://www.bilibili.com" target="_self">b站</a><br />
+    </body>
+</html>

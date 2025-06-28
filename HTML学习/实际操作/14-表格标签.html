@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格标签</title>
+</head>
+<body>
+    <!-- 表格标签 -->
+     <!-- table-表格，tr-行，th-表格单元头，td-内容单元格, border属性可以添加边框线 -->
+     <!-- thead-标头，tbody-内容，tfoot-底部 -->
+
+    <!-- 单元格合并 -->
+     <!-- rowspan-跨行合并，colspan跨列合并 -->
+    <table border = 1>
+        <thead>
+            <tr>
+                <strong>
+                    <th>
+                        姓名
+                    </th>
+                    <th>
+                        语文
+                    </th>   
+                    <th>
+                        数学
+                    </th> 
+                    <th>
+                        总分
+                    </th>
+                </strong>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    张三
+                </td>
+                <td>
+                    99
+                </td>
+                <td>
+                    100
+                </td>
+                <td rowspan = "2">
+                    199
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    王五
+                </td>
+                <td>
+                    100
+                </td>
+                <td>
+                    99
+                </td>
+
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    总结
+                </td>
+                <td colspan = "3">
+                    全市第一
+                </td>
+            </tr>
+        </tfoot>
+
+
+    </table>
+</body>
+</html>

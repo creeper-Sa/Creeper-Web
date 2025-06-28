@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            /* 主轴改为垂直方向 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: red;
+            display: flex;
+
+            box-sizing: border-box;
+        }
+
+        .box div {
+            margin-bottom: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            11111
+        </div>
+        <div>
+            22222
+        </div>
+        <table>
+            <tr>
+                <th>1111</th>
+                <th>222</th>
+            </tr>
+            <tr>
+                <th>3333</th>
+                <th>4444</th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

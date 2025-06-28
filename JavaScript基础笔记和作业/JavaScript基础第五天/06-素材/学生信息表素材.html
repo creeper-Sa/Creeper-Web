@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 600px;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        tr {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        table tr:nth-child(1) {
+            background-color: #ddd;
+        }
+
+        table tr:not(:first-child):hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>学生信息</h2>
+    <p>将数据渲染到页面中...</p>
+    <table>
+    <caption>学生列表</caption>
+
+
+    <script>
+        let student = [
+            {
+                number : '序号',
+                name : '姓名',
+                age : '年龄',
+                sex : '性别',
+                hometown : '家乡'
+            },
+                        {
+                number : 1,
+                name : '小明',
+                age : 18,
+                sex : '男',
+                hometown : '武汉'
+            },
+                        {
+                number : 2,
+                name : '小明',
+                age : 18,
+                sex : '男',
+                hometown : '武汉'
+            },
+                        {
+                number : 3,
+                name : '小明',
+                age : 18,
+                sex : '男',
+                hometown : '武汉'
+            }
+        ];
+        for(let i = 0; i < student.length;i++){
+            document.write(`
+                    <tr>
+                        <th>${student[i].number}</th>
+                        <th>${student[i].name}</th>
+                        <th>${student[i].age}</th>
+                        <th>${student[i].sex}</th>
+                        <th>${student[i].hometown}</th>
+                    </tr>
+            `);
+        }
+
+    </script>
+    </table>
+</body>
+
+</html>

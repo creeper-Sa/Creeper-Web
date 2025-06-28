@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息页面</title>
+</head>
+<body>
+    <h1>注册信息</h1>
+
+    <form action="">
+        <div>
+            <h3>个人信息</h3>
+            <label>姓名: <input type="text" placeholder="请输入真实姓名"></label>
+            <br><br>
+            <label>密码: <input type="password" placeholder="请输入密码"></label>
+            <br><br>
+            <label>确认密码: <input type="password" placeholder="请输入确认密码"></label> 
+            <br><br>
+            性别: 
+            <input type="radio" id="man" name="gender" checked> <label for="man">男</label>
+            <input type="radio" id="woman" name="gender"> <label for="woman">女</label>
+            <br><br>
+            <label>居住城市:</label>
+            <select>
+                <option>北京</option>
+                <option>上海</option>
+                <option selected>武汉</option>
+                <option>四川</option>
+                <option>重庆</option>
+                <option>深圳</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>教育经历</h3>
+            最高学历:
+            <select>
+                <option>博士</option>
+                <option>硕士</option>
+                <option>本科</option>
+                <option>二本</option>
+                <option>高中</option>
+                <option>初中</option>
+                <option>小学</option>
+                <option selected>--</option>
+            </select>
+            <br><br>
+            <label>学校名称: <input type="text"></label>
+            <br><br>
+            <label>所属专业: <input type="text"></label>
+            <br><br>
+            在校时间: 
+            <select>
+                <option>2000</option>
+                <option>2001</option>
+                <option>2002</option>
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+            </select>
+            --
+            <select>
+                <option>2000</option>
+                <option>2001</option>
+                <option>2002</option>
+                <option>2003</option>
+                <option selected>2004</option>
+                <option>2005</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>工作经历</h3>
+            <label>公司名称: <input type="text"></label>
+            <br><br>
+            <label>工作描述: <br> <textarea></textarea></label>
+            <br><br>
+            <label><input type="checkbox"> 已阅读并同意以下协议</label>
+            <br>
+            <ul>
+                <li><a href="#" target="_blank">《用户服务协议》</a></li>
+                <li><a href="#" target="_blank">《隐私政策》</a></li>
+            </ul>
+            <button type="submit">免费注册</button>
+            <button type="reset">重置</button>
+        </div>
+    </form>
+</body>
+</html>

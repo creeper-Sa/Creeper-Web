@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+            margin: 0 auto;
+            width: 100px;
+            text-align: center;
+            display: block;
+            
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul{
+            margin-top: 100px;
+        }
+
+        div{
+            border: 1px solid black;
+        }
+        .title{
+            color: #000;
+            background-color: green;
+        }
+
+        .hidden {
+            display: none;
+        }        
+        .active {
+            height: 200px;
+            color: red;
+            display: block;
+        }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <div class="title">标题1</div>
+        <div class="hidden">这是标题1</div>
+      </li>
+      <li>
+        <div class="title">标题2</div>
+        <div class="hidden">这是标题2</div>
+      </li>
+      <li>
+        <div class="title">标题3</div>
+        <div class="hidden">这是标题3</div>
+      </li>
+      <li>
+        <div class="title">标题4</div>
+        <div class="hidden">这是标题4</div>
+      </li>
+    </ul>
+
+    <script>
+        const title = document.querySelectorAll('.title');
+        for(let i = 0; i < title.length; i++){
+            title[i].addEventListener('click',function(e){
+                // console.log('点击了' + title[i].textContent);
+                const text = title[i].nextElementSibling;
+                const active = document.querySelector('.active');
+                if(active) active.classList.remove('active');
+                
+                console.log(text.innerHTML);
+                if(text.className === 'hidden'){
+                    text.classList.add('active');
+                }
+                
+                
+
+
+            })
+        }
+
+    </script>
+  </body>
+</html>

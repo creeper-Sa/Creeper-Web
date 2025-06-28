@@ -1,0 +1,14 @@
+<html></html> --HTML标签--页面中最大的标签，称为根标签
+
+<head></head>--文档的头部--注意在head标签中我们必须要设置的标签是title
+
+<title></title>--文档的标题--让页面拥有一个自己的网页标题
+
+<body></body>--文档的主题--元素包含文档的所有内容，页面内容基本都是放到body里面的
+
+基本结构框架：
+<html>
+	<head></head>
+			<title></title>
+	<body></body>
+</html>

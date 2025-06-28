@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+        <style type="text/css">
+        span{
+        color: red;
+        font-size: 12px;
+        }
+        </style>
+    </head>
+    <body>
+        <form action="index.html" method="post" onsubmit="return validate()">
+            <p>
+                账号:<input type="text" id="uname" value=""/>
+                <span id="uname_msg"></span>
+            </p>
+            <p>
+                密码:<input type="password" id="pwd" value=""/>
+                <span id="pwd_msg"></span>
+            </p>
+            <p>
+                <input type="submit" id="sub" value="登录"/>
+            </p>
+        </form>
+    </body>
+    <script type="text/javascript">
+        function validate()
+        {
+            document.getElementById("uname_msg").innerText="";
+            document.getElementById("pwd_msg").innerText="";
+            var uname=document.getElementById("uname").value;
+            var pwd=document.getElementById("pwd").value;
+            if(uname==null||uname=="")
+            {
+                document.getElementById("uname_msg").innerHTML="账户不能为空";
+                return false;
+            }
+            if(pwd==null||pwd=="")
+            {
+                document.getElementById("pwd_msg").innerHTML="密码不能为空";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类标签选择器</title>
+    <!-- E::before E::After -->
+    <!-- 使用伪类标签选择器必须设置content属性，且伪类选择器是行内显示结构 -->
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        /* E::before 在标签前面加 content内容 */
+
+        div::before {
+            content: "老鼠";
+        }
+
+        /* E::after 在标签后面加 content内容 */
+        div::after {
+            content: "大米";
+        }
+    </style>
+</head>
+<body>
+    <div>爱</div>
+</body>
+</html>

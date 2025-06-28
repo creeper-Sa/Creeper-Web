@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 主轴的对齐方法 */
+        .box1 {
+            /* 主轴头对齐
+            justify-content: flex-start; */
+
+            /* 主轴末尾对齐
+            justify-content: flex-end; */
+
+            /* 居中效果 */
+            /* justify-content: center; */
+
+
+            /* 中间间隔性对齐， （父级的主轴宽度-子级的主轴宽度）÷ （盒子的数量n-1）  */
+            /* justify-content: space-between; */
+
+            /* 间距出现在主轴两侧，中间看上去有2个侧边 */
+            /* justify-content: space-around; */
+
+            /* 每个盒子、容器之间的间隔相同 */
+            justify-content: space-evenly;
+
+            width: 800px;
+            height: 400px;
+            background-color: pink;
+            display: flex;
+        }
+
+        .box1 div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+        }
+
+        /* 侧轴对齐方式 */
+        .box2 {
+
+
+            /* align-items: start; */
+            align-items: end;
+            /* 侧轴拉伸平铺，但是要求子级中不能有height */
+            /* align-items: stretch; */
+            /* 侧轴居中 */
+            /* align-items: center; */
+            
+            width: 800px;
+            height: 800px;
+            background-color: blue;
+            display: flex;
+        }
+        .box2 div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+
+        }
+
+        /* 如果要设置单独属性，则可以使用align-self */
+        .box2 div:nth-child(2n) {
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <div class="box2">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

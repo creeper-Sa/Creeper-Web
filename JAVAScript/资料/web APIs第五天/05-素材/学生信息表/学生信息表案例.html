@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <form class="info" autocomplete="off">
+    姓名：<input type="text" class="uname" name="uname" />
+    年龄：<input type="text" class="age" name="age" />
+    性别:
+    <select name="gender" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    薪资：<input type="text" class="salary" name="salary" />
+    就业城市：<select name="city" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">录入</button>
+  </form>
+  <div class="title">共有数据<span>0</span>条</div>
+  <h1>就业榜</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+    </tbody>
+  </table>
+  <script>
+  // 参考数据
+      const initData = [
+        {
+          stuId: 1001,
+          uname: '欧阳霸天',
+          age: 19,
+          gender: '男',
+          salary: '20000',
+          city: '上海',
+        }
+      ]
+      //利用本地存储更新
+      //存储一次可永久保存，后续可以注释掉
+      // localStorage.setItem('student-data',JSON.stringify(initData));
+      const data = localStorage.getItem('student-data');
+
+      const arr = data ? JSON.parse(data) : [];
+      //获取tbody，追加到tbody上
+      const tbody = document.querySelector('tbody');
+
+      const info = document.querySelector('.info');
+      const items = document.querySelectorAll('[name]')
+      const uId = document.querySelector('.uname')
+      const age = document.querySelector('.age');
+      const gender = document.querySelector('.gender');
+      const salary = document.querySelector('.salary');
+      const city = document.querySelector('.city');
+      info.addEventListener('submit', function(e){
+        e.preventDefault();
+        //非空判断
+        for(let i = 0; i < items.length; i++){
+          if(items[i].value === ''){
+            return alert('输入数据不能为空');
+          }
+
+        }
+        //开始追加数据
+        arr.push({
+          //处理ID顺序问题
+          stuId: arr.length ? arr[arr.length - 1].stuId + 1 : 1,
+          uname: uId.value,
+          age: age.value,
+          gender: gender.value,
+          salary: salary.value,
+          city: city.value
+        });
+        render();
+        this.reset();
+        //追加到本地存储中
+        localStorage.setItem('student-data',JSON.stringify(arr));
+
+      })
+      //存入本地数据中
+      // console.log(arr);
+    
+      //渲染业务
+      function render(){
+        //通过map完成对数据的追加
+        const trArr = arr.map(function(ele, index){
+          return `
+            <tr>
+              <td>${ele.stuId}</td>
+              <td>${ele.uname}</td>
+              <td>${ele.age}</td>
+              <td>${ele.gender}</td>
+              <td>${ele.salary}</td>
+              <td>${ele.city}</td>
+              <td>
+                <a href="javascript:" data-id=${index}>删除</a>
+              </td>
+            </tr> 
+          `
+        })
+        // console.log(tbody.innerHTML = trArr.join(''));
+
+        tbody.innerHTML = trArr.join('');
+        document.querySelector('.title span').innerHTML = arr.length;
+
+      }
+      render();
+
+      //删除功能
+      //通过监听tbody的事件委托来定位删除
+      tbody.addEventListener('click', function(e){
+        //判断是否为a标签
+        if(e.target.tagName === 'A'){
+          // alert('1111');
+          if(confirm('您确定要删除这条信息吗?')){
+            //找到数组中对应的下标，并删除
+            arr.splice(e.target.dataset.id,1);
+
+            //再删除本地存储内的信息或者直接更新数据
+            //更新数据
+            localStorage.setItem('student-data', JSON.stringify(arr));
+
+            render();
+          }
+
+        }
+      })
+  </script>
+</body>
+
+</html>

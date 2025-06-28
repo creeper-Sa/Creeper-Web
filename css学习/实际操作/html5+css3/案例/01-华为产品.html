@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            
+            text-decoration: none;
+        }
+        li {
+            position: relative;
+            list-style: none;
+            width: 350px;
+            height: 247px;
+            overflow: hidden;
+        }
+        img {
+            width: 350px;
+            transition: all 1s;
+            
+        }
+
+        .box {
+            width:  1200px;
+            margin: 50px auto;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul h4 {
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            
+        }
+        ul h5 {
+            font-size: 18px;
+        }
+        ul p {
+            margin-top: 50px;
+            font-size: 14px;
+            line-height: 14px;
+        }
+
+        .iconfont {
+            padding-top: 10px;
+            color: red;
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        .text {
+            position: absolute;
+            left: 80px;
+            transform: translate(-50%);
+            bottom: -50px;
+            transition: all 1s;
+            color: white;
+            z-index: 1;
+        }
+
+        ul li:hover .text {
+            transform: translate(-50%,-50%);
+        }
+
+        ul li:hover::after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "";
+            z-index: 0;
+            width: 350px;
+            height: 247px;
+            background-image: linear-gradient(to bottom, transparent, rgba( 0, 0, 0, 0.5))
+        }
+
+        ul li:hover a img{
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/huawei1.jpeg" alt="">
+                    </div>
+
+                    <div class="text">
+                        <h4>行业洞察</h4>
+                        <h5>迈向智能世界</h5>
+                        <p>了解更多<span class="iconfont icon-arrow-right"></span></p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/huawei2.jpeg" alt="">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="pic">
+                        <img src="./images/product.jpeg" alt="">
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

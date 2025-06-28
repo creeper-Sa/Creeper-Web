@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            31-万天航
+        </title>
+    </head>
+    <frameset rows="20%,*">
+        <frame src="子框架/top.html" noresize="noresize" name="top" />
+        <frameset cols="15%,*">
+        <frame src="子框架/left.html" name="left" />
+        <frame src="子框架/right.html" name="right" />
+        </frameset>
+    </frameset>
+</html>

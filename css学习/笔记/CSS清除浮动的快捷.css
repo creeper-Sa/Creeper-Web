@@ -1,0 +1,19 @@
+/* 单伪元素法 */
+.clearfix::before  {
+    content:"";
+    clear:both;
+    display:block;
+}
+/* before用于清除外边距塌陷问题 */
+/* 伪元素的默认形式是行内式，可以将父级的高度撑到与子级相同的高度，这样就解决了父级塌陷问题 */
+/* 双伪元素法 */
+.clearfix::befor,
+.clearfix::after {
+    content:"";
+    display:table;
+
+}
+/* 清除浮动 */
+.clear::after {
+    clear:both;
+}

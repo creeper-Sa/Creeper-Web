@@ -1,0 +1,12 @@
+<html>	</html>--双标签
+<br	/>--单标签
+双标签分为两类：包含关系和并列关系
+
+包含关系：					并列关系：
+<head>					<head> </head>
+	<title> </title>	<body></body>
+</head>
+
+HTML页面也成HTML文档
+
+

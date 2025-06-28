@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        div {
+            
+            width: 500px;
+            height: 200px;
+            background-color: blue;
+            border: 2px solid #000;
+            transition: all 1s;
+        }
+
+        /* 平移 */
+        .move {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+
+        }
+        .move:hover {
+            /* translate取值可以有像素单位、百分比、正负 */
+            /* translate可以只写一个值，表示只靠x轴移动 */
+            /* 当取值为百分比的时候，是按照自身盒子尺寸进行移动 */
+            transform: translate(100px,100px);
+        }
+
+        /* 平移居中 */
+        .bigbox {
+            position: relative;
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            
+        }
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%,-50%);
+
+            width: 50px;
+            height: 50px;
+        }
+
+        /* 旋转 */
+        .rotate-box {
+            margin: 800px auto;
+            width: 500px;
+            height: 500px;
+            transition: all 1s;   
+        }
+
+        .rotate {
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+
+        }
+
+        .rotate:hover {
+            transform: rotate(360deg);
+            /* 设置旋转点 */
+            transform-origin: right bottom;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div>
+        <div class="move">
+
+        </div>
+    </div>
+
+    <div class="bigbox">
+        <div class="box">
+
+        </div>
+    </div>
+
+    <div class="rotate-box">
+        <div class="rotate">
+
+        </div>
+    </div>
+
+</body>
+</html>

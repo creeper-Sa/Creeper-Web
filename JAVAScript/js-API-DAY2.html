@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定</title>
+    <style>
+        button {
+            width: 100px;
+            height: 50px;
+            color: red;
+        }
+        div {
+            width: 1000px;
+            height: 1000px;
+            margin: 100px auto;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- 鼠标点击事件 click mouseenter mouseleave -->
+     <!-- 获取光标 focus blur -->
+      <!-- 键盘按下触发 Keydown Key up -->
+       <!-- 文本事件 input -->
+    <button class="btn1">确定</button>
+    
+    <button class="btn2">取消</button>
+    <div></div>
+
+
+    <script>
+        const btn1 = document.querySelector('.btn1');
+        const btn2 = document.querySelector('.btn2');
+        const div = document.querySelector('div');
+
+
+        div.addEventListener("mouseenter", function() {
+            console.log("11111")
+            div.innerHTML = "blue";
+        })
+
+        div.addEventListener("mouseleave", function() {
+            div.innerHTML = "1111";
+            div.style.backgroundColor = "red";
+        })
+
+
+    </script>
+</body>
+</html>

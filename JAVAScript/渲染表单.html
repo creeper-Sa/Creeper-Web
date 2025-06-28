@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            height: 60px;
+            
+        }
+        table th {
+            padding: 20px 30px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h2>表单</h2>
+    
+
+    <script>
+        let name;
+        let price;
+        let total;
+        let num;
+        let address;
+        name = prompt("请输入商品名称");
+        price = +prompt("请输入商品单价");
+        num = +prompt("请输入商品数量");
+        total = price * num;
+        address = prompt("请输入商品收货地址");
+
+        switch(total){
+            case 1 :
+                alert(1111);
+                break;
+            case 2:
+                alert(2222);
+                break
+        }
+        document.write(`
+        <table>
+            <tr>
+                <th>名称</th>
+                <th>单价</th>
+                <th>总价</th>
+                <th>数量</th>
+                <th>地址</th>
+            </tr>
+            <tr>
+                <th>${name}</th>
+                <th>${price}</th>
+                <th>${total}</th>
+                <th>${num}</th>
+                <th>${address}</th>
+            </tr>
+        </table>
+        `);
+    </script>
+</body>
+</html>

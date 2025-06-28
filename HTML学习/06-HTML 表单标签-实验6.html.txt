@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <title> 31-万天航</title>
+    </head>
+    <body >
+        <form action=”/” method=”post” align="center">
+            <table width="700" border="0" cellspacing="1" cellpadding="1" align="center">
+                <tr >
+                <td colspan="2" >
+                <b>表单布局-用户注册</b>
+                </td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">用户名：</td>
+                <td align="left">
+                <input type="text" name="username" id="username" />
+                </td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">密码：</td>
+                <td align="left"><input type="password" name="pwd"/></td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">手机号码：</td>
+                <td align="left"><input type="text" name="phone"/></td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">性别：</td>
+                <td align="left">
+                男<input type="radio" name="sex" value="1"/>&nbsp;
+                女<input type="radio" name="sex" value="0"/>
+                </td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">爱好：</td>
+                <td align="left">
+                爬山<input type="checkbox" name="hobby" value="爬山"/>&nbsp;
+                看书<input type="checkbox" name="hobby" value="看书"/>&nbsp;
+                音乐<input type="checkbox" name="hobby" value="音乐"/>&nbsp;
+                </td>
+                </tr>
+                <tr>
+                <td width="45%" align="right">个人简介：</td>
+                <td align="left">
+                <textarea name="content" rows="10" cols="30"></textarea>
+                </td>
+                </tr>
+                <tr>
+                <td rowspan="2" align="right">
+                <input type="submit" value="提交信息"/>
+                </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

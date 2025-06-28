@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+    </head>
+    <body>
+        <div id="time"></div><br />
+        <input type="button" id="btn1" value=" 停 止 刷 新 " onclick="stopTime()" />
+        <input type="button" id="btn2" value=" 继 续 刷 新 " onclick="ContinueTime()" />
+    </body>
+    <script type="text/javascript">
+        window.onload=showTime();
+        var timeid=window.setInterval(showTime,1000);
+        /*显示系统当前时间*/
+        function showTime()
+        {
+            var today=new Date();
+            var hh=today.getHours();
+            hh=hh<=9?("0"+hh):hh;
+            var mm=today.getMinutes();
+            mm=mm<=9?("0"+mm):mm;
+            var ss=today.getSeconds();
+            ss=ss<=9?("0"+ss):ss;
+            var div=document.getElementById("time");
+            div.innerText="当前时间："+hh+":"+mm+":"+ss;
+        }
+        /*停止刷新*/
+        function stopTime()
+        {
+            window.clearInterval(timeid);
+        }
+        /*继续刷新*/
+        function ContinueTime()
+        {
+            window.onload=showTime();
+            var timeid=window.setInterval(showTime,1000);
+        }
+    </script>
+</html>

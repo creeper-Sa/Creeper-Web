@@ -1,0 +1,100 @@
+//out:../css/
+
+@import "./base";
+@rootSize:37.5rem;
+
+//头部
+header {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 (15/@rootSize);
+    height: 44./@rootSize;
+    // background-color: red;
+    line-height: (44 /@rootSize);
+    .iconfont {
+        font-size: (24/@rootSize);
+    }
+
+    h4 {
+        font-size: (17/@rootSize);
+        font-weight: 800;
+    }
+    
+    .record {
+        font-size: (15/@rootSize);
+        color: #2CB5A5;
+    }
+}
+
+// banner区域
+.banner {
+    margin-top: (30/@rootSize);
+    margin-bottom: (34/@rootSize);
+    text-align: center;
+
+    img {
+        margin-bottom: (18/@rootSize);
+        width: (240/@rootSize);
+        height: (206/@rootSize);
+    }
+    p {
+        font-size: (16/@rootSize);
+
+        span {
+            color: #16C2A3;
+        }
+    }
+}
+
+// 问诊类型
+.type {
+    padding: 0 (15/@rootSize);
+    ul li {
+        margin-bottom: (20/@rootSize);
+        padding: 0 (15/@rootSize);
+        width: (345/@rootSize);
+        height: (78/@rootSize);
+        border-radius: (4/@rootSize);
+        border: (1/@rootSize) solid #EDEDEDE5;
+        border-radius: (4/@rootSize);
+
+        a {
+            display: flex;
+            align-items: center;
+            // 内容要再78里面垂直居中，不然只靠内容撑开
+            height: (78/@rootSize);
+
+            img {
+                margin-right: (16/@rootSize);
+                width: (40/@rootSize);
+                height: (40/@rootSize);
+                
+            }
+
+            .text {
+                flex: 1;
+                h4 {
+                    font-size: 16./@rootSize;
+                    line-height: (24/@rootSize);
+                    font-weight: 500;
+                }
+                p {
+                    font-size: 13./@rootSize;
+                    line-height: (20/@rootSize);
+                    color: #848484;
+                }
+
+
+            }
+
+            span {
+                font-size: (16/@rootSize);
+                color: #848484;
+            }
+        }
+
+
+    }
+
+}

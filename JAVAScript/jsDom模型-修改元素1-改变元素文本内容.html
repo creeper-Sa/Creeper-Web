@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+    </head>
+    <body>
+        <div id="content">
+        百度
+        </div>
+        <input type="button" id="btn"
+        value="改变 div 标签的值" onclick="changeContent()" />
+    </body>
+    <script type="text/javascript">
+        function changeContent(){
+        /*获取 div 对象*/
+        var div=document.getElementById("content");
+        /*打印 div 对象文本的值*/
+        console.log(div.innerText);
+        /*修改 div 对象文本的值*/
+        if(div.innerText == "中公教育")
+        {
+            return div.innerText="百度";
+        }
+        if(div.innerText == "百度")
+        {
+            return  div.innerText="中公教育";
+        }
+        }
+    </script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 父类选择器 子类选择器  ，包含所有父类中的子类标签 -->
+    <title>CSS后代选择器</title>
+    <style>
+        div span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <span>这个就是span</span>
+    <div>
+        <span>这是DIV中的span</span>
+        <p>
+            <span>这是DIV中的P中的SPAN</span>
+        </p>
+    </div>
+</body>
+</html>

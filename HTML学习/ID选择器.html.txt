@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>31-万天航</title>
+        <style>
+        #t01{
+        width: 200px;
+        height: 200px;
+        background-color: darkgoldenrod;
+        }
+        #username{
+        background-color: chartreuse;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="t01">
+        <!-- 在 div 中定义一个 input 标签 -->
+        <input id="username" type="text" />
+        </div>
+    </body>
+</html>

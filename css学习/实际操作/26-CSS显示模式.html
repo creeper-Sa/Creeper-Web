@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS显示模式</title>
+    <!-- 常见的显示模式: 块级元素，行内元素，行内快元素 -->
+      <style>
+        /* 块级元素的特点: 1.独占一行 2.宽度默认是父级的100% 3.添加的宽高属性生效 */
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .div1 {
+            background-color: red;
+        }
+
+        .div2 {
+            background-color: hotpink;
+        }
+
+
+        /* 行内元素的特点: 1.一行可以存在多个 2.由内容撑开尺寸 3.如果添加宽高属性不生效 */
+        span {
+            width: 100px;
+            height: 100px;
+
+        }
+        .span1 {
+            background-color: red;
+        }
+        .span2 {
+            background-color: hotpink;
+        }
+
+        /* 行内块元素特点: 1.一行可以存在多个 2.尺寸由内容撑开 3.添加的宽高属性会生效 */
+        img {
+            width: 500px;
+            height: 250px;
+        }
+      </style>
+</head>
+<body>
+
+    <!-- 块级元素 -->
+    <div class="div1">11111这是div标签</div>
+    <div class="div2">11111这是div标签</div>
+    <div>11111这是div标签</div>
+    <!-- 行内元素 -->
+    <span class="span1">1111span标签</span><span class="span2">1111span标签</span>
+    <!-- 行内快元素 -->
+    <img src="../../HTML学习/逸仙.jpg" alt="这是逸仙">
+    <img src="../../HTML学习/逸仙.jpg" alt="这是逸仙">
+</body>
+</html>
