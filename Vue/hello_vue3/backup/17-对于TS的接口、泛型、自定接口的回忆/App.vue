@@ -1,35 +1,14 @@
 <template>
     <!-- //用于存放html -->
      <div class="app">
-       <Person :list="person"></Person>
+       <Person></Person>
      </div>
 </template>
 
 <script lang="ts" setup name="App">
   //vue3的App编写
-  import { reactive } from "vue";
   import Person from "./component/Person.vue";
-  import type { Persons } from "./types";
-  //【props】从父组件传值回去
-
-
-  let person = reactive<Persons>([
-    {
-      id:'1001',
-      name:'王小桃',
-      age:18
-    },
-    {
-      id:'1002',
-      name:'王小绿',
-      age:18
-    },
-    {
-      id:'1002',
-      name:'柚子',
-      age:18
-    }
-  ])
+  
 
   
 </script>

@@ -26,6 +26,13 @@ import { ref } from 'vue';
         console.log(web.value);
         console.log(study.value);
     }
+
+        // 数据
+    let name = ref('张三')
+    let age = ref(18)
+    // 使用defineExpose将组件中的数据交给外部
+    defineExpose({name,age})
+
 </script>
 
 
