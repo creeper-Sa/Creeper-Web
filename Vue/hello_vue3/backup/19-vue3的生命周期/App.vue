@@ -1,15 +1,16 @@
 <template>
     <!-- //用于存放html -->
      <div class="app">
-       <Person/>
+       <Person v-if="isShow"></Person>
      </div>
 </template>
 
 <script lang="ts" setup name="App">
-import Person from './component/Person.vue';
-
-
-
+  //vue3的App编写
+  import { reactive, ref } from "vue";
+  import Person from "./component/Person.vue";
+  let isShow = ref(true);
+  
 </script>
 
 <style scoped>
