@@ -21,6 +21,7 @@
 
 <script lang="ts">
     // - 路由组件通常存放在`pages` 或 `views`文件夹，一般组件通常存放在`components`文件夹。
+  
     // - 通过点击导航，视觉效果上“消失” 了的路由组件，默认是被**卸载**掉的，需要的时候再去**挂载**。
     // js或者ts
     import {RouterView,RouterLink} from 'vue-router'

@@ -1,6 +1,8 @@
 <template>
     <!-- //用于存放html -->
      <div class="app">
+      <!-- v-if 相当于 条件渲染（真的加/移除 DOM） -->
+      <!-- v-show 是 控制显示（切换 display: none） -->
        <Person v-if="isShow"></Person>
      </div>
 </template>
