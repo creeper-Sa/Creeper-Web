@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style type="text/css">
+			.big-box {
+				height: 3000px;
+				width: 100%;
+				background-color: pink;
+			}
+			* {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="big-box">a</div>
+		<!-- 设置自定义属性防止解析html自动请求 -->
+		<img data-src="./2343004043.jpeg" alt="" />
+		<img data-src="./2343004044.jpeg" alt="" />
+		<script src="懒加载.js"></script>
+	</body>
+</html>
