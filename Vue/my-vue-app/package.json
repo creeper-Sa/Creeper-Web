@@ -12,15 +12,18 @@
     "@element-plus/icons-vue": "^2.3.1",
     "element-plus": "^2.10.4",
     "less": "^4.3.0",
+    "mockjs": "^1.1.0",
     "path": "^0.12.7",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.10",
     "@types/node": "^24.0.13",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
+    "axios": "^1.10.0",
     "typescript": "~5.8.3",
     "unplugin-auto-import": "^19.3.0",
     "unplugin-vue-components": "^28.8.0",

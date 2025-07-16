@@ -4,6 +4,7 @@
           background-color="#545c64"
           text-color="#fff"
           :collapse="isCollapse"
+          :collapse-transition="false"
           >
             <h3 v-show="!isCollapse">商电后台管理系统</h3>
              <h3 v-show="isCollapse">后台</h3>

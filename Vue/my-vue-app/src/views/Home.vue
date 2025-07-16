@@ -1,13 +1,65 @@
 <script setup lang="ts">
+import { getCurrentInstance, onMounted, reactive, ref } from 'vue';
+
+
+
 
 const getImageUrl = (user:string)=> new URL(`../assets/images/${user}.png`,import.meta.url).href;
+const tableData = ref([
+    {
+      name: "Java",
+      todayBuy: 100,
+      monthBuy: 200,
+      totalBuy: 300,
+    },
+    {
+      name: "Python",
+      todayBuy: 100,
+      monthBuy: 200,
+      totalBuy: 300,
+    }
+])
+
+const tableLabel = ref({
+    name: "课程",
+    todayBuy: "今日购买",
+    monthBuy: "本月购买",
+    totalBuy: "总购买",
+})
+
+//使用axios的基本交互
+// axios({
+//     url:'api/home/getTableData',
+//     method:'get'
+// }).then(res=>{
+//     //传入数据后
+//     console.log(res.data);
+//     if(res.data.code === 200){
+//         console.log(res.data.data.tableData);
+//         tableData.value = res.data.data.tableData;
+//     }
+// })
+
+//axios的二次封装
+const instance = getCurrentInstance();
+const proxy = instance?.proxy;  // 直接访问 proxy 属性
+
+const getTableData = async () =>{
+   const data = await proxy?.$api.getTableData();
+   tableData.value = data.tableData;
+   console.log(data);
+}
+onMounted(()=>{
+   getTableData();
+})
+
 
 </script>
 
 <template>
     <el-row class="home" :gutter="20">
         <el-col :span="8" style="margin-top: 20px;">
-            <el-card>
+            <el-card shadow="hover">
                 <div class="user">
                     <img :src="getImageUrl('user')" class="user"/>
                     <div class="user-info">
@@ -19,6 +71,17 @@ const getImageUrl = (user:string)=> new URL(`../assets/images/${user}.png`,impor
                     <p>上次登录时间: <span>2025-4-3</span></p>
                     <p>上次登录的地点: <span>湖北</span></p>
                 </div>
+            </el-card>
+
+            <el-card shadow="hover" class="user-table">
+                <el-table :data="tableData">
+                    <el-table-column
+                    v-for="(value,key) in tableLabel"
+                    :key="key"
+                    :prop="key"
+                    :label="value"
+                    ></el-table-column>
+                </el-table>
             </el-card>
         </el-col>
     </el-row>

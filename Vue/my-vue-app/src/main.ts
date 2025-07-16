@@ -7,9 +7,13 @@ import router from './router';
 // import 'element-plus/dist/index.css';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createPinia } from 'pinia';
+import '@/api/mock.ts';
+import api from './api/api';
 
 const app = createApp(App);
 const pinia = createPinia();
+
+app.config.globalProperties.$api = api;
 app.use(router);
 app.use(pinia);
 
