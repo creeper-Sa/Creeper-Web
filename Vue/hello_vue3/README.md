@@ -1,33 +1,34 @@
-# hello_vue3
+# 🚀 hello_vue3
 
-This template should help get you started developing with Vue 3 in Vite.
+> 基于 **Vue 3 + Vite + TypeScript** 的前端开发模板，支持快速构建现代化 SPA 项目，适合中后台管理系统或组件库开发。
 
-## Recommended IDE Setup
+## 📦 技术栈
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- ⚙️ 框架：Vue 3
+- ⚡ 构建工具：Vite
+- 💡 语言支持：TypeScript
+- 🎨 UI 框架：可自行集成 Element Plus / Naive UI / Ant Design Vue 等
+- 🧰 包管理器：npm（或 pnpm / yarn）
+- 📦 模块化支持：ESM
 
-## Type Support for `.vue` Imports in TS
+## 💻 推荐开发环境
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Volar 插件](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（⚠️ 建议禁用 Vetur）
+- Node.js 16+
 
-## Customize configuration
+## 📁 项目结构（示例）
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+```bash
+hello_vue3/
+├── public/           # 静态资源
+├── src/
+│   ├── assets/       # 图片/样式等资源
+│   ├── components/   # 公共组件
+│   ├── views/        # 页面组件
+│   ├── App.vue       # 根组件
+│   ├── main.ts       # 项目入口
+├── index.html
+├── vite.config.ts    # Vite 配置
+├── tsconfig.json     # TypeScript 配置
+└── README.md
