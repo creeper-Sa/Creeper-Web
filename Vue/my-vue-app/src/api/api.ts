@@ -9,8 +9,23 @@ import request from "./request";
 export default {
     getTableData(){
         return request({
-            url:'api/home/getTableData',
+            url:'/home/getTableData',
             method:'get',
+            mock:true,
+        });
+    },
+    getCountData(){
+        return request({
+            url:'/home/getCountData',
+            method:'get',
+            mock:true,
+        });
+    },
+    getChartData(){
+        return request({
+            url:'/home/getChartData',
+            method:'get',
+            mock:true,
         });
     },
 };

@@ -1,6 +1,10 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
-const service = axios.create();
+import config from "@/config";
+const service = axios.create({
+    baseURL:config.baseApi,
+}
+);
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
@@ -29,6 +33,26 @@ service.interceptors.response.use(
 
 function request(options:any){
     options.method = options.method || 'get';
+    //关于get请求参数的调整
+    if(options.method.toLowerCase() === 'get'){
+        options.params = options.data;
+    }
+
+    //对mock的开关做一个处理
+    //如果要用api中覆盖config中的mock做了一个处理
+    let isMock = config.mock;
+    if(typeof options.mock !== 'undefined'){
+        isMock = options.mock;
+    }
+
+    //针对环境做一个处理
+    //动态设置 Axios 的基础请求地址 当前运行的环境，可能是 'development' | 'test' | 'prod'
+    if(config.env === 'prod'){
+        //如果当前环境是生产环境（prod），就设置 Axios 请求基地址为 config.baseApi，以便请求真实线上接口。
+        service.defaults.baseURL = config.baseApi;
+    }else{
+        service.defaults.baseURL = isMock ? config.mockApi : config.baseApi;
+    }
     return service(options);
 }
 
