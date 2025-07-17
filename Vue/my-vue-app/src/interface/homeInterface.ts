@@ -12,3 +12,9 @@ export interface TableDataItem {
   totalBuy: number;
 }
 
+export interface VideoItem {
+  name: string;
+  value: number;
+}
+
+

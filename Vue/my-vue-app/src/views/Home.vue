@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { CountDataItem, TableDataItem } from '@/interface/homeInterface';
-import { getCurrentInstance, onMounted, reactive, ref } from 'vue';
+import { CountDataItem, TableDataItem, VideoItem } from '@/interface/homeInterface';
+import { getCurrentInstance, onMounted, onUnmounted, reactive, ref } from 'vue';
 import * as echarts from 'echarts'
-import { EChartsOption, XAXisComponentOption } from 'echarts';
+import { EChartsOption, PieSeriesOption, XAXisComponentOption } from 'echarts';
 
 
 const getImageUrl = (user:string)=> new URL(`../assets/images/${user}.png`,import.meta.url).href;
@@ -14,14 +14,20 @@ const tableLabel = ref({
     monthBuy: "本月购买",
     totalBuy: "总购买",
 })
-
 const countData = ref<CountDataItem[]>([]);
-
 const chartData = ref([
 
 ])
-const echart = ref<HTMLElement | null>(null);
 
+//三个折线图的REF
+const echart = ref<HTMLElement | null>(null);
+const userEchart = ref<HTMLElement | null>(null);
+const videoEchart = ref<HTMLElement | null>(null);
+const lineChart = ref<echarts.ECharts | null>(null);
+const userChart = ref<echarts.ECharts | null>(null);
+const videoChart = ref<echarts.ECharts | null>(null);
+
+const observer = ref<ResizeObserver | null>(null);
 //使用axios的基本交互
 // axios({
 //     url:'api/home/getTableData',
@@ -54,24 +60,86 @@ const getCountData = async () =>{
 }
 
 const getChartData = async () => {
-  const { orderData } = await proxy?.$api.getChartData();
-   // 修改时先做类型断言，告诉 TS 这是 category 类型坐标轴，有 data 属性
-   if (echart.value && orderData && xOptions.xAxis && !Array.isArray(xOptions.xAxis)) {
-      const xAxis = xOptions.xAxis as XAXisComponentOption & { data: string[] };
-      xAxis.data = orderData.date;
+  const { orderData, userData, videoData } = await proxy?.$api.getChartData();
 
-      // 你的系列配置
-      const brands = Object.keys(orderData.data[0]);
-      xOptions.series = brands.map(brand => ({
-         name: brand,
-         type: 'line',
-         data: orderData.data.map((item: Record<string, number>) => item[brand]),
-      }));
+  if (echart.value && orderData && xOptions.xAxis && !Array.isArray(xOptions.xAxis)) {
+    const xAxis = xOptions.xAxis as XAXisComponentOption & { data: string[] };
+    xAxis.data = orderData.date;
 
-      const lineChart = echarts.init(echart.value);
-      lineChart.setOption(xOptions);
-   }
+    const brands = Object.keys(orderData.data[0]);
+    xOptions.series = brands.map(brand => ({
+      name: brand,
+      type: 'line',
+      data: orderData.data.map((item: Record<string, number>) => item[brand]),
+    }));
+
+    if (!lineChart.value) {
+      lineChart.value = echarts.init(echart.value);
+    }
+    lineChart.value.setOption(xOptions);
+  }
+
+  // 用户新增柱状图
+  if (userEchart.value && userData) {
+    const userOptions: EChartsOption = {
+      xAxis: {
+        type: 'category',
+        data: userData.map((item: any) => item.date),
+      },
+      yAxis: { type: 'value' },
+      tooltip: { trigger: 'axis' },
+      legend: { data: ['新增用户', '活跃人数'] },
+      series: [
+        { name: '新增用户', type: 'bar', data: userData.map((item: any) => item.new) },
+        { name: '活跃人数', type: 'bar', data: userData.map((item: any) => item.active) },
+      ],
+    };
+
+    if (!userChart.value) {
+      userChart.value = echarts.init(userEchart.value);
+    }
+    userChart.value.setOption(userOptions);
+  }
+
+  // 饼图
+  if (videoEchart.value && videoData) {
+    const pieSeries = {
+      name: '品牌销量',
+      type: 'pie',
+      radius: '60%',
+      data: videoData.map((item: VideoItem) => ({
+        name: item.name,
+        value: item.value,
+      })),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+        },
+      },
+    } as const;
+
+    pieOptions.series = [pieSeries];
+
+    if (!videoChart.value) {
+      videoChart.value = echarts.init(videoEchart.value);
+    }
+    videoChart.value.setOption(pieOptions);
+  }
+
+  // 监听容器大小变化，触发所有图表 resize
+  observer.value = new ResizeObserver((en=>{
+      lineChart.value?.resize();
+      userChart.value?.resize();
+      videoChart.value?.resize();
+  }))
+
+  if(proxy?.$refs['echart']){
+      observer.value.observe(proxy?.$refs['echart'] as Element);
+  }
 };
+
 
 
 // 定义 xAxis 具体类型，明确为单个对象
@@ -116,7 +184,12 @@ const xOptions = reactive<EChartsOption>({
 });
 
 
-const pieOptions = reactive({
+const pieOptions = reactive<{
+  tooltip: { trigger: string },
+  legend: Record<string, any>,
+  color: string[],
+  series: PieSeriesOption[]
+}>({
   tooltip: {
     trigger: "item",
   },
@@ -131,7 +204,7 @@ const pieOptions = reactive({
     "#3ed1cf",
   ],
   series: []
-})
+});
 
 
 onMounted(()=>{
@@ -188,6 +261,15 @@ onMounted(()=>{
             <el-card class="top-echart">
                <div ref="echart" style="height: 280px;"></div>
             </el-card>
+
+            <div class="graph">
+               <el-card>
+                  <div ref="userEchart" style="height: 240px;"></div>
+               </el-card>
+               <el-card>
+                  <div ref="videoEchart" style="height: 240px;"></div>
+               </el-card>
+            </div>
         </el-col>
     </el-row>
 </template>
