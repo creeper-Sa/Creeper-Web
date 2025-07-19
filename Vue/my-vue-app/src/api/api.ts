@@ -28,4 +28,12 @@ export default {
             mock:true,
         });
     },
+    getUserData(data:any){
+        return request({
+            url:'/user/getUserData',
+            method:'get',
+            mock:true,
+            data,
+        });
+    },
 };

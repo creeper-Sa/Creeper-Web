@@ -66,7 +66,7 @@ const list =ref([
         {
             path: '/user',
             name: 'user',
-            label: '用户管理',
+            label: '员工管理',
             icon: 'user',
             url: 'User'
         },
