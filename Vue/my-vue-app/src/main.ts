@@ -9,6 +9,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createPinia } from 'pinia';
 import '@/api/mock.ts';
 import api from './api/api';
+import 'element-plus/dist/index.css'
 
 const app = createApp(App);
 const pinia = createPinia();

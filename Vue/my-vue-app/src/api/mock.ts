@@ -5,4 +5,5 @@ import userApi from './mockData/user'
 Mock.mock(/api\/home\/getTableData/,'get',homeAip.getTableData);
 Mock.mock(/api\/home\/getCountData/,'get',homeAip.getCountData);
 Mock.mock(/api\/home\/getChartData/,'get',homeAip.getChartData);
-Mock.mock(/user\/getUserData/,"get", userApi.getUserList)
+Mock.mock(/user\/getUserData/,"get", userApi.getUserList);
+Mock.mock(/user\/deleteUser/,"get", userApi.deleteUser);

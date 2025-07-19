@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ComponentSize } from 'element-plus'
+import {  ElMessage, ElMessageBox } from 'element-plus'
 import { getCurrentInstance, onMounted, reactive, ref } from 'vue'
 
 const tableData = ref([]);
@@ -69,6 +69,30 @@ const handleCurrentChange = (page: number) => {
     getUserData();
 }
 
+const handleDelete = async (row: any) => {
+  console.log('要删除的用户id：', row.id);
+  ElMessageBox.confirm('您确定要删除吗?', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+  }).then(async () => {
+    try {
+      const res = await proxy.$api.deleteUserData({ id: row.id });
+      console.log('删除接口返回:', res);
+      ElMessage.success('删除成功');
+      getUserData();
+    } 
+    catch (err) {
+      console.error('删除失败:', err);
+      ElMessage.error('删除失败，请稍后再试');
+    }
+  }).catch(() => {
+    console.log('用户点击取消，或 confirm 抛出错误');
+    ElMessage.info('已取消删除');
+  });
+};
+
+
 onMounted(()=>{
     getUserData();
 })
@@ -98,11 +122,11 @@ onMounted(()=>{
                 :label="item.label"
             />
             <el-table-column fixed="right" label="操作" min-width="120" >
-            <template #default>
+            <template #="scope">
                 <el-button  type="primary" size="small" @click="handleClick">
                     编辑
                 </el-button>
-                <el-button  type="danger" size="small">删除</el-button>
+                <el-button  type="danger" size="small" @click="handleDelete(scope.row)">删除</el-button>
             </template>
             </el-table-column>
         </el-table>

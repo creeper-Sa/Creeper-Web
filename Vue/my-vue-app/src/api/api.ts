@@ -36,4 +36,12 @@ export default {
             data,
         });
     },
+    deleteUserData(data:any){
+        return request({
+            url:'/user/deleteUser',
+            method:'get',
+            mock:true,
+            data,
+        });
+    },
 };
