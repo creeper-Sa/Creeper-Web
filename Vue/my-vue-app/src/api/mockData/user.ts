@@ -83,4 +83,52 @@ export default {
       }
     }
   },
+
+  /**
+   * 增加用户
+   * @param name, addr, age, birth, sex
+   * @return {{code: number, data: {message: string}}}
+   */
+  createUser: (config: { body: string }) => {
+    const { name, addr, age, birth, sex } = JSON.parse(config.body)
+    List.unshift({
+      id: Mock.Random.guid(),
+      name: name,
+      addr: addr,
+      age: age,
+      birth: birth,
+      sex: sex
+    })
+    return {
+      code: 200,
+      data: {
+        message: '添加成功'
+      }
+    }
+  },
+  /**
+   * 修改用户
+   * @param id, name, addr, age, birth, sex
+   * @return {{code: number, data: {message: string}}}
+   */
+  updateUser: (config: { body: string }) => {
+    const { id, name, addr, age, birth, sex } = JSON.parse(config.body)
+    const sex_num = parseInt(sex)
+    List.some(u => {
+      if (u.id === id) {
+        u.name = name
+        u.addr = addr
+        u.age = age
+        u.birth = birth
+        u.sex = sex_num
+        return true
+      }
+    })
+    return {
+      code: 200,
+      data: {
+        message: '编辑成功'
+      }
+    }
+  }
 }

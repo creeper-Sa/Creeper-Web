@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {  ElMessage, ElMessageBox } from 'element-plus'
-import { getCurrentInstance, onMounted, reactive, ref } from 'vue'
+import {  ElMessage, ElMessageBox, FormInstance, FormRules } from 'element-plus'
+import { getCurrentInstance, nextTick, onMounted, reactive, ref } from 'vue'
 
 const tableData = ref([]);
 const tableLabel = reactive([
@@ -92,36 +92,100 @@ const handleDelete = async (row: any) => {
 };
 //新增用户的实现
 const action=ref('add');
-const dialogVisible = ref(true);
+const dialogVisible = ref(false);
 const formUser = reactive({
-    sex: 0
+  name:'',
+  sex: 0,
+  age: null,
+  birth:'',
+  addr:''
 });
 //表单的验证规则
-const rules = reactive({
+const rules: FormRules = {
   name: [{ required: true, message: "姓名是必填项", trigger: "blur" }],
   age: [
     { required: true, message: "年龄是必填项", trigger: "blur" },
-    { type: "number", message: "年龄必须是数字" },
+    { type: "number", message: "年龄必须是数字", trigger: "blur" }
   ],
   sex: [{ required: true, message: "性别是必选项", trigger: "change" }],
-  birth: [{ required: true, message: "出生日期是必选项" }],
-  addr:[{ required: true, message: '地址是必填项' }]
-});
+  birth: [{ required: true, message: "出生日期是必选项", trigger: "change" }],
+  addr: [{ required: true, message: "地址是必填项", trigger: "blur" }]
+};
+
+
+const userFormRef = ref<FormInstance>();
 
 const handleClose = ()=>{
     //获取重置表单
-    dialogVisible.value = false;
+  dialogVisible.value = false;
 }
 
 const handleCancel = ()=>{
-    dialogVisible.value = false;
-}
-const handleClick = () => {
-  console.log('click')
+  dialogVisible.value = false;
 }
 
+
 const handleAdd = ()=>{
-    
+  dialogVisible.value = true;
+  action.value = 'add';
+  Object.assign(formUser, getEmptyUser());
+  nextTick(() => {
+    userFormRef.value?.clearValidate();
+  });
+
+}
+
+//置空-新增前清空 
+const getEmptyUser = () => ({
+  name: '',
+  age: '',
+  sex: 0,
+  birth: '',
+  addr: ''
+});
+
+const timeFormat = (time: string | number | Date): string => {
+  const date = new Date(time);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+//提交,通过el-form中的响应式ref数据返回
+const onSubmit = () => {
+  if (!userFormRef.value) return;
+  userFormRef.value.validate(async (valid: boolean) => {
+    if (valid) {
+      let res = null;
+      formUser.birth = /^\d{4}-\d{2}-\d{2}$/.test(formUser.birth) ? formUser.birth : timeFormat(formUser.birth);
+      if (action.value === 'add') {
+        console.log('提交用户信息:', formUser);
+        // 提交逻辑放这里
+        res = await proxy.$api.addUserData(formUser);
+      }
+      else{
+         res = await proxy.$api.updateUserData(formUser);
+      }
+      if(res){
+        dialogVisible.value = false;
+        userFormRef.value?.resetFields();
+        getUserData();
+      }
+    } 
+    else {
+      ElMessage.warning('请完善表单信息');
+    }
+  });
+};
+
+//更新数据
+const handleUpdata = (row: any) => {
+  action.value = 'update';
+  dialogVisible.value = true;
+  nextTick(()=>{
+    Object.assign(formUser,{...row,sex:''+ row.sex});
+  })
 }
 
 onMounted(()=>{
@@ -153,7 +217,7 @@ onMounted(()=>{
             />
             <el-table-column fixed="right" label="操作" min-width="120" >
             <template #="scope">
-                <el-button  type="primary" size="small" @click="handleClick">
+                <el-button  type="primary" size="small" @click="handleUpdata(scope.row)">
                     编辑
                 </el-button>
                 <el-button  type="danger" size="small" @click="handleDelete(scope.row)">删除</el-button>
@@ -180,7 +244,7 @@ onMounted(()=>{
        <!--需要注意的是设置了:inline="true"，
         会对el-select的样式造成影响，我们通过给他设置一个class=select-clearn
         在css进行处理-->
-    <el-form :inline="true"  :model="formUser" :rules="rules" ref="userForm">
+    <el-form :inline="true"  :model="formUser" :rules="rules" ref="userFormRef">
       <el-row>
         <el-col :span="12">
           <el-form-item label="姓名" prop="name">

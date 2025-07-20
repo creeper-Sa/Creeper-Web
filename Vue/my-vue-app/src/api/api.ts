@@ -44,4 +44,20 @@ export default {
             data,
         });
     },
+    addUserData(data:any){
+        return request({
+            url:'/user/addUser',
+            method:'post',
+            mock:true,
+            data,
+        });
+    },
+    updateUserData(data:any){
+        return request({
+            url:'/user/updateUser',
+            method:'post',
+            mock:true,
+            data,
+        });
+    },
 };
