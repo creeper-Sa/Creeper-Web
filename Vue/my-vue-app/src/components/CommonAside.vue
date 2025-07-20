@@ -5,6 +5,7 @@
           text-color="#fff"
           :collapse="isCollapse"
           :collapse-transition="false"
+          :default-active="activeMenu"
           >
             <h3 v-show="!isCollapse">商电后台管理系统</h3>
              <h3 v-show="isCollapse">后台</h3>
@@ -12,6 +13,7 @@
               v-for="item in noChildren"
               :index="item.path"
               :key="item.path"
+              @click="handleMenu(item)"
             >
               <component class="icons" :is="item.icon"></component>
               <span>{{ item.label }}</span>
@@ -30,13 +32,12 @@
                   v-for="subItem in item.children"
                   :index="subItem.path"
                   :key="subItem.path"
+                  @click="handleMenu(subItem)"
                 >
                   <component class="icons" :is="subItem.icon"></component>
                   <span>{{ subItem.label }}</span>
                 </el-menu-item>
               </el-menu-item-group>
-
-
             </el-sub-menu>
 
           </el-menu>
@@ -46,6 +47,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useAllDataStore } from '@/store'
+import { useRouter,useRoute } from 'vue-router';
 const allDataStore = useAllDataStore();
 //先引入静态数据
 const list =ref([
@@ -93,14 +95,22 @@ const list =ref([
         }
 ])
 
-
-
 const noChildren = computed(()=> list.value.filter(item => !item.children))
 const hasChildren = computed(()=> list.value.filter(item => item.children))
 const isCollapse = computed(()=>allDataStore.state.isCollapse);
 
 //标题宽度
 const width = computed(()=>allDataStore.state.isCollapse ? '64px' : '180px');
+//更新路由
+const activeMenu = computed(()=>route.path)
+//tag标签
+const router = useRouter();
+const route = useRoute();
+//获取路由标签
+const handleMenu = (item: { path: string; name: string; label: string; icon: string; url: string; })=>{
+  router.push(item.path)
+  allDataStore.selectMenu(item);
+}
 </script>
 
 <style lang="less" scoped>

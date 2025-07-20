@@ -15,9 +15,7 @@ const tableLabel = ref({
     totalBuy: "总购买",
 })
 const countData = ref<CountDataItem[]>([]);
-const chartData = ref([
 
-])
 
 //三个折线图的REF
 const echart = ref<HTMLElement | null>(null);
@@ -87,7 +85,7 @@ const getChartData = async () => {
         data: userData.map((item: any) => item.date),
       },
       yAxis: { type: 'value' },
-      tooltip: { trigger: 'axis' },
+      tooltip: { trigger: 'item' },
       legend: { data: ['新增用户', '活跃人数'] },
       series: [
         { name: '新增用户', type: 'bar', data: userData.map((item: any) => item.new) },
@@ -166,7 +164,7 @@ const xOptions = reactive<EChartsOption>({
     left: '20%',
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: 'item',
   },
   xAxis: xAxisOption, // 这里明确是单个对象
   yAxis: [
@@ -250,6 +248,7 @@ onMounted(()=>{
                :body-style="{display:'flex',padding:0}"
                v-for="item in countData"
                   :key="item.name"
+
                >
                   <component :is="item.icon" class="icons" :style="{background:item.color }"></component>
                   <div class="detail">

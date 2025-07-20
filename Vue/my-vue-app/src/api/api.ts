@@ -1,7 +1,6 @@
 /**
  * 整个项目api的统一管理
  */
-
 import request from "./request";
 
 //请求首页左侧的表格数据

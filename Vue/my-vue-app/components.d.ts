@@ -11,6 +11,7 @@ declare module 'vue' {
     AsideComponent: typeof import('./src/components/AsideComponent.vue')['default']
     CommonAside: typeof import('./src/components/CommonAside.vue')['default']
     CommonHeader: typeof import('./src/components/CommonHeader.vue')['default']
+    CommonTab: typeof import('./src/components/CommonTab.vue')['default']
     ComponentAside: typeof import('./src/components/ComponentAside.vue')['default']
     copy: typeof import('./src/components/CommonAside copy.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
@@ -43,6 +44,9 @@ declare module 'vue' {
     ElTabColumn: typeof import('element-plus/es')['ElTabColumn']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTag: typeof import('element-plus/es')['ElTag']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
