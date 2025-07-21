@@ -94,7 +94,7 @@ export const useAllDataStore = defineStore('allData',()=>{
 
         let routers = router.getRoutes()
         routers.forEach((item:any)=>{
-        if(item.name =='main' || item.name == 'login'){
+        if(item.name =='main' || item.name == 'login' || item.name == '404'){
             return
         }
         else{

@@ -15,11 +15,17 @@ const store = useAllDataStore();
 const router = useRouter();
 const handleLogin = async () => {
   const res = await proxy?.$api.getMenu(loginForm);
-  // console.log('登录成功：', res);
-  //拿到菜单以后
+
+  if (!res) return;
+
+  // 1. 设置菜单和 token
   store.updateMenuList(res.menuList);
   store.state.token = res.token;
-  store.addMenu(router,'refresh');
+
+  // 2. 注册动态路由（使用当前 menuList，而非 localStorage 中的）
+  store.addMenu(router, 'login'); 
+
+  // 3. 跳转首页
   router.push('/home');
 };
 
