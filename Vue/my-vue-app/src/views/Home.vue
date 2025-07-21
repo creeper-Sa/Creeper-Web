@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CountDataItem, TableDataItem, VideoItem } from '@/interface/homeInterface';
+import { CountDataItem, TableDataItem, VideoItem } from '@/interface/Interface';
 import { getCurrentInstance, onMounted, onUnmounted, reactive, ref } from 'vue';
 import * as echarts from 'echarts'
 import { EChartsOption, PieSeriesOption, XAXisComponentOption } from 'echarts';

@@ -10,13 +10,17 @@ import { createPinia } from 'pinia';
 import '@/api/mock.ts';
 import api from './api/api';
 import 'element-plus/dist/index.css'
+import { useAllDataStore } from './store';
+
 
 const app = createApp(App);
 const pinia = createPinia();
-
+app.use(pinia);
+const store = useAllDataStore();
+store.addMenu(router,'refresh');
 app.config.globalProperties.$api = api;
 app.use(router);
-app.use(pinia);
+
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)

@@ -16,5 +16,12 @@ export interface VideoItem {
   name: string;
   value: number;
 }
-
-
+export interface MenuItem {
+  path: string;
+  name: string;
+  label: string;
+  icon: string;
+  url: string;
+  children?: MenuItem[];
+   component?: any;
+}

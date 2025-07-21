@@ -59,4 +59,12 @@ export default {
             data,
         });
     },
+    getMenu(data:any){
+        return request({
+            url:'/permission/getMenu',
+            method:'post',
+            mock:true,
+            data,
+        });
+    },
 };

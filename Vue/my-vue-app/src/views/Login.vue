@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { getCurrentInstance, reactive } from 'vue';
+import { useAllDataStore } from '@/store';
+import { useRouter } from 'vue-router';
+const loginForm = reactive({
+  username: '',
+  password: '',
+  });
+
+//获取到mock的拦截数据
+const instance = getCurrentInstance();
+const proxy = instance?.proxy;
+//通过角色登录相对应的路由，用的是pinia集中管理 
+const store = useAllDataStore();
+const router = useRouter();
+const handleLogin = async () => {
+  const res = await proxy?.$api.getMenu(loginForm);
+  // console.log('登录成功：', res);
+  //拿到菜单以后
+  store.updateMenuList(res.menuList);
+  store.state.token = res.token;
+  store.addMenu(router,'refresh');
+  router.push('/home');
+};
+
+</script>
+
+
 <template>
   <div class="body-login">
     <el-form :model="loginForm" class="login-container">
@@ -7,7 +35,7 @@
         <el-input
           type="input"
           placeholder="请输入账号"
-          v-model="loginForm.userName"
+          v-model="loginForm.username"
           clearable
         ></el-input>
       </el-form-item>
@@ -16,7 +44,7 @@
         <el-input
           type="password"
           placeholder="请输入密码"
-          v-model="loginForm.passWord"
+          v-model="loginForm.password"
           show-password
           clearable
         ></el-input>
@@ -28,19 +56,6 @@
     </el-form>
   </div>
 </template>
-
-<script setup lang="ts">
-import { reactive } from 'vue';
-
-const loginForm = reactive({
-  userName: '',
-  passWord: '',
-});
-
-const handleLogin = () => {
-  console.log('登录中...', loginForm);
-};
-</script>
 
 <style scoped>
 .body-login {

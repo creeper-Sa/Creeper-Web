@@ -45,58 +45,59 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useAllDataStore } from '@/store'
 import { useRouter,useRoute } from 'vue-router';
+import { MenuItem } from '@/interface/Interface';
 const allDataStore = useAllDataStore();
 //先引入静态数据
-const list =ref([
-          {
-          path: '/home',
-          name: 'home',
-          label: '首页',
-          icon: 'house',
-          url: 'Home'
-          },
-        {
-            path: '/mall',
-            name: 'mall',
-            label: '商品管理',
-            icon: 'video-play',
-            url: 'Mall'
-        },
-        {
-            path: '/user',
-            name: 'user',
-            label: '员工管理',
-            icon: 'user',
-            url: 'User'
-        },
-        {
-            path: 'other',
-            label: '其他',
-            icon: 'location',
-            children: [
-                {
-                    path: '/page1',
-                    name: 'page1',
-                    label: '页面1',
-                    icon: 'setting',
-                    url: 'Page1'
-                },
-                {
-                    path: '/page2',
-                    name: 'page2',
-                    label: '页面2',
-                    icon: 'setting',
-                    url: 'Page2'
-                }
-            ]
-        }
-])
-
-const noChildren = computed(()=> list.value.filter(item => !item.children))
-const hasChildren = computed(()=> list.value.filter(item => item.children))
+// const list =ref([
+//           {
+//           path: '/home',
+//           name: 'home',
+//           label: '首页',
+//           icon: 'house',
+//           url: 'Home'
+//           },
+//         {
+//             path: '/mall',
+//             name: 'mall',
+//             label: '商品管理',
+//             icon: 'video-play',
+//             url: 'Mall'
+//         },
+//         {
+//             path: '/user',
+//             name: 'user',
+//             label: '员工管理',
+//             icon: 'user',
+//             url: 'User'
+//         },
+//         {
+//             path: 'other',
+//             label: '其他',
+//             icon: 'location',
+//             children: [
+//                 {
+//                     path: '/page1',
+//                     name: 'page1',
+//                     label: '页面1',
+//                     icon: 'setting',
+//                     url: 'Page1'
+//                 },
+//                 {
+//                     path: '/page2',
+//                     name: 'page2',
+//                     label: '页面2',
+//                     icon: 'setting',
+//                     url: 'Page2'
+//                 }
+//             ]
+//         }
+// ])
+const list = computed<MenuItem[]>(() => allDataStore.state.menuList);
+const noChildren = computed(() => list.value.filter((item): item is MenuItem => !item.children));
+const hasChildren = computed(() => list.value.filter((item): item is MenuItem & { children: MenuItem[] } => !!item.children));
 const isCollapse = computed(()=>allDataStore.state.isCollapse);
 
 //标题宽度
@@ -106,6 +107,8 @@ const activeMenu = computed(()=>route.path)
 //tag标签
 const router = useRouter();
 const route = useRoute();
+
+
 //获取路由标签
 const handleMenu = (item: { path: string; name: string; label: string; icon: string; url: string; })=>{
   router.push(item.path)

@@ -16,7 +16,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>退出</el-dropdown-item>
+              <el-dropdown-item @click="handleLoginOut">退出</el-dropdown-item>
 
             </el-dropdown-menu>
           </template>
@@ -27,12 +27,17 @@
 
 <script lang="ts" setup>
 import { useAllDataStore } from '@/store';
-import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router';
 
 const allDataStore = useAllDataStore();
 const getImageUrl = (user:string)=> new URL(`../assets/images/${user}.png`,import.meta.url).href;
 const handleCollapse = ()=>{
   allDataStore.state.isCollapse = !allDataStore.state.isCollapse;
+}
+const router = useRouter();
+const handleLoginOut = ()=>{
+  allDataStore.clean();
+  router.push('/login')
 }
 </script>
 
