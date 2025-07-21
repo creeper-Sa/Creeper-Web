@@ -34,6 +34,7 @@ export const useAllDataStore = defineStore('allData',()=>{
             state.value.currentMenu = null;
         }
         else{
+              state.value.currentMenu = item;
             //找到所选择的路由
             let index = state.value.tags.findIndex(index=> index.name === item.name);
             index === -1 ? state.value.tags.push(item) : '';

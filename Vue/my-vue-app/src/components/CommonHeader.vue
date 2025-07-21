@@ -6,6 +6,7 @@
           </el-button>
           <el-breadcrumb separator="/" class="bread">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item  v-if="current" :to="current.path">{{current.label}}</el-breadcrumb-item>
           </el-breadcrumb>
       </div>
       <div class="r-content">
@@ -26,7 +27,9 @@
 </template>
 
 <script lang="ts" setup>
+import { MenuItem } from '@/interface/Interface';
 import { useAllDataStore } from '@/store';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const allDataStore = useAllDataStore();
@@ -39,6 +42,8 @@ const handleLoginOut = ()=>{
   allDataStore.clean();
   router.push('/login')
 }
+
+const current = computed<null | MenuItem>(()=>allDataStore.state.currentMenu);
 </script>
 
 <style lang="less" scoped>
