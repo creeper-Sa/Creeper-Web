@@ -7,7 +7,7 @@
           :collapse-transition="false"
           :default-active="activeMenu"
           >
-            <h3 v-show="!isCollapse">商电后台管理系统</h3>
+            <h3 v-show="!isCollapse">通用后台管理系统</h3>
              <h3 v-show="isCollapse">后台</h3>
             <el-menu-item 
               v-for="item in noChildren"
